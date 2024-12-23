@@ -90,23 +90,37 @@
         #header-hamburger:hover::before{ /*before는 자식이랑 똑같음 -> #pp::before 부모가 #pp */
             position: absolute; /* before가 absolute면 부모중에서 static아닌애, 여기서는 일반 #header-hamburger가 기준이됨됨 */
             content: '';
+            z-index: 0;
             left: 1px;
             right: 1px;
+            top: 1px;
             width: 44px;
             height: 44px;
-            background-color: var(--color_option_bg);
+            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
         }
         #header-hamburger > div{
             background-image: url(./sp_main.png);
             width: 26px;
             height: 26px;
+            position: relative;
+            /*z-index 관계는 서로 형제일때만 적용됨 -> 부모와 자식간의 z-index는 안먹음음*/
+            /*근데 z-index static일때는 안먹으니까 바꿔줘야함 -> 위치 그대로하려면 렐러티브*/
+            z-index: 1;
             background-repeat: no-repeat;
             background-size: 422px 405px;
             background-position: -286px -123px;
         }
         #main{
             height: 2000px;
+        }
+        .blind{
+            position: absolute;
+            clip: rect(0 0 0 0);
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
         }
     </style>
 </head>
@@ -116,6 +130,7 @@
             <div id="header">
                 <button id="header-hamburger">
                     <div></div>
+                    <span class="blind">확장 영역</span>
                 </button>
             </div>
             <div id="search"></div>
