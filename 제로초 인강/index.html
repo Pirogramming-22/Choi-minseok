@@ -73,7 +73,7 @@
             /* display가 블록이다 = width가 100퍼센트 다 차지한다 -> 1280px 나머지 부분 마진으로써 차지하고 있음*/
             display: inline-block; 
             width: 1280px;
-            background-color:darkslategrey;
+            background-color:white;
         }
         #header{
             text-align: left;
@@ -119,7 +119,7 @@
             left: -10px;
         }
         #header-hamburger > div{
-            background-position: -286px -123px;
+            background-position: -286px -156px;
         }
         #header-naverpay{
             right: 42px;
@@ -179,7 +179,11 @@
                     border-radius: 33px;
                     text-align: left;
                 }
+                #search >form:hover{
+                    box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
+                }
                 #search > form > input{
+                    background-color: white;
                     width: 480px;
                     height: 100%;
                     padding: 17px 0;
@@ -215,6 +219,12 @@
                     border: none;
                     outline: none;
                 }
+                #search-input::placeholder{
+                    color: white;
+                }
+                #search-input:focus::placeholder{
+                    color: rgb(230, 230, 230)
+                }
                 #search-right{
                     display: flex;
                     flex: 1;
@@ -228,7 +238,6 @@
                     border: none;
                     cursor: pointer;
                 }
-
                 #search-keyboard::before{
                     content: '';
                     display: block;
@@ -238,6 +247,9 @@
                     background-repeat: no-repeat;
                     width: 24px;
                     height: 16px;
+                }
+                #search-keyboard:hover::before{
+                    filter: brightness(0.7);
                 }
                 #search-recent::before{
                     content: '';
@@ -254,7 +266,7 @@
                     display: inline-block;
                     background-image: url(./sp_main.png);
                     background-size: 422px 405px;
-                    background-position: -368px -70px;
+                    background-position: -368px -71px;
                     background-repeat: no-repeat;
                     width: 25px;
                     height: 25px;
