@@ -58,6 +58,10 @@
             --color_enter: #e538e2;
             --color_enter_rgb: 229, 56, 226;
         }
+        *{
+            /*width가 패딩이랑 보더 포함한 전체 너비가리킴(마진제외)*/
+            box-sizing: border-box;
+        }
         body, html{
             margin: 0;
             padding: 0;
@@ -75,19 +79,19 @@
             text-align: left;
             position: relative;
         }
-        #header-hamburger{
+        #header-hamburger, #header-naverpay, #header-notice{
             position: absolute;
-            top: 18px;
-            left: -10px;
             display: inline-block;
             /*마진이면 밖의 요소이기 때문에 테두리 부분 클릭 안댐*/
+            top: 18px;
             padding: 10px;
             background: none;
             border: none;
             cursor: pointer;
         }
-        /*absolute: 조상중에 position static 아닌애 있으면 걔가 기준*/
-        #header-hamburger:hover::before{ /*before는 자식이랑 똑같음 -> #pp::before 부모가 #pp */
+         /*absolute: 조상중에 position static 아닌애 있으면 걔가 기준*/
+        #header-hamburger:hover::before, #header-naverpay:hover::before, #header-notice:hover::before{
+            /*before는 자식이랑 똑같음 -> #pp::before 부모가 #pp */
             position: absolute; /* before가 absolute면 부모중에서 static아닌애, 여기서는 일반 #header-hamburger가 기준이됨됨 */
             content: '';
             z-index: 0;
@@ -99,7 +103,7 @@
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
         }
-        #header-hamburger > div{
+        #header-hamburger > div, #header-naverpay > div, #header-notice > div{
             background-image: url(./sp_main.png);
             width: 26px;
             height: 26px;
@@ -109,7 +113,27 @@
             z-index: 1;
             background-repeat: no-repeat;
             background-size: 422px 405px;
+        }
+        #header-hamburger{
+            left: -10px;
+        }
+        #header-hamburger > div{
             background-position: -286px -123px;
+        }
+        #header-naverpay{
+            right: 42px;
+            padding: 10px 8px;
+        }
+        #header-naverpay > div{
+            width: 30px;
+            height: 30px;
+            background-position: -284px -244px;
+        }
+        #header-notice{
+            right: -10px;
+        }
+        #header-notice > div{
+            background-position: -286px -184px;
         }
         #main{
             height: 2000px;
@@ -131,6 +155,14 @@
                 <button id="header-hamburger">
                     <div></div>
                     <span class="blind">확장 영역</span>
+                </button>
+                <button id="header-naverpay">
+                    <div></div>
+                    <span class="blind">네이버 페이</span>
+                </button>
+                <button id="header-notice">
+                    <div></div>
+                    <span class="blind">알림</span>
                 </button>
             </div>
             <div id="search"></div>
