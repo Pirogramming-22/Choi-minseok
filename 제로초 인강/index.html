@@ -73,9 +73,12 @@
         }
         #header{
             text-align: left;
+            position: relative;
         }
         #header-hamburger{
-            margin-top: 18px;
+            position: absolute;
+            top: 18px;
+            left: -10px;
             display: inline-block;
             /*마진이면 밖의 요소이기 때문에 테두리 부분 클릭 안댐*/
             padding: 10px;
@@ -83,7 +86,14 @@
             border: none;
             cursor: pointer;
         }
-        #header-hamburger:hover{
+        /*absolute: 조상중에 position static 아닌애 있으면 걔가 기준*/
+        #header-hamburger:hover::before{ /*before는 자식이랑 똑같음 -> #pp::before 부모가 #pp */
+            position: absolute; /* before가 absolute면 부모중에서 static아닌애, 여기서는 일반 #header-hamburger가 기준이됨됨 */
+            content: '';
+            left: 1px;
+            right: 1px;
+            width: 44px;
+            height: 44px;
             background-color: var(--color_option_bg);
             border-radius: 50%;
         }
