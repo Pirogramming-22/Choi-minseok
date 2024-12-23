@@ -6,13 +6,23 @@
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
     <title>Naver</title>
     <style>
+        body, html{
+            margin: 0;
+            padding: 0;
+        }
         #wrap{
             text-align: center;
         }
         #wrap-center{
-            display: inline-block;
+            /* display가 블록이다 = width가 100퍼센트 다 차지한다 -> 1280px 나머지 부분 마진으로써 차지하고 있음*/
+            display: inline-block; 
             width: 1280px;
             background-color: yellow;
+        }
+        #hamburger{
+            margin-top: 18px;
+            background-color: blue;
+            width: 46px; height: 46px;
         }
         #main{
             height: 2000px;
@@ -22,7 +32,11 @@
 <body>
     <div id="wrap">
         <div id="wrap-center">
-            <div id="header"></div>
+            <div id="header">
+                <div id="hamburger">
+
+                </div>
+            </div>
             <div id="search"></div>
             <div id="nav"></div>
             <div id="main"></div>
