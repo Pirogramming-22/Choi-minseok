@@ -172,7 +172,7 @@
                 2. css가 html보다 먼저 해석되기 때문에 렌더링이 느려짐
                 */
                 #search > form{
-                    display: inline-block;
+                    display: inline-flex;
                     width: 700px;
                     height: 60px;
                     border: 1px solid #03c75a;
@@ -193,7 +193,9 @@
                     margin-right: 12px;
                 }
                 #search-svg{
-                    display: inline-block;
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
                     width: 68px;
                     margin-right: 12px;
                     height: 100%;
@@ -214,8 +216,19 @@
                     outline: none;
                 }
                 #search-right{
-                    display: inline-block;
+                    display: flex;
+                    flex: 1;
+                    align-items: stretch;
+                    justify-content: center;
+
                 }
+
+                #search-keyboard, #search-recent, #search-button{
+                    background: transparent;
+                    border: none;
+                    cursor: pointer;
+                }
+
                 #search-keyboard::before{
                     content: '';
                     display: block;
@@ -257,14 +270,14 @@
                     <div id="search-right">
                         <button href="#" id="search-keyboard">
                             <span class="blind">입력도구</span>
-                        </ㅠ>
+                        </button>
                         <button href="#" id="search-recent">
                             <span class="blind">자동완성/최근검색어펼치기</span>
                         </button>
+                        <button id="search-button">
+                            <div><span class="blind">검색색</span></div>
+                        </button>
                     </div>
-                    <button id="search-button">
-                        <div><span class="blind">검색색</span></div>
-                    </button>
                 </form>
             </div>
             <div id="nav"></div>
