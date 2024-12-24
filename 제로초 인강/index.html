@@ -155,6 +155,647 @@
             margin: -1px;
             overflow: hidden;
         }
+        /*body중간에 style 태그 쓰면 안되는 이유
+        1. css가 html보다 먼저 해석되기 때문에 먼저 해석된 css가 뒤에 해석된 css를 덮어씀
+        2. css가 html보다 먼저 해석되기 때문에 렌더링이 느려짐
+        */
+        #search > form{
+            display: inline-flex;
+            width: 700px;
+            height: 60px;
+            border: 1px solid #03c75a;
+            border-radius: 33px;
+            text-align: left;
+        }
+        #search >form:hover{
+            box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
+        }
+        
+        #search > form > input{
+            background-color: white;
+            width: 480px;
+            height: 100%;
+            padding: 17px 0;
+            border: none;
+            outline: none;
+        }
+        #search > form a{
+            width: 68px;
+            height: 100%;
+            padding: 17px;
+            margin-right: 12px;
+        }
+        #search-svg::after{
+            display: none;
+        }
+        #search>form:focus-within #search-svg::after{
+            position: absolute;
+            content: '';
+            width: 1px;
+            height: 20px;
+            background-color: #e4e4e4;
+            display: inline-block;
+            right: 0;
+            top: 20px;
+        }
+        
+        #search-svg{
+            display: inline-flex;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            width: 68px;
+            margin-right: 12px;
+            height: 100%;
+            padding-left: 10px;
+        }
+        #search-svg svg{
+            width: 18px;
+            height: 18px;
+            fill: #03c75a
+        }
+        #search-input{
+            width: 480px;
+            padding: 17px 0;
+            font-size: 2rem;
+            line-height: 24px;
+            font-weight: bold;
+            border: none;
+            outline: none;
+        }
+        #search-input::placeholder{
+            color: white;
+        }
+        #search-input:focus::placeholder{
+            color: rgb(230, 230, 230)
+        }
+        #search-right{
+            display: flex;
+            flex: 1;
+            align-items: stretch;
+            justify-content: center;
+
+        }
+
+        #search-keyboard, #search-recent, #search-button{
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        #search-keyboard::before{
+            content: '';
+            display: block;
+            background-image: url(./sp_main.png);
+            background-size: 422px 405px;
+            background-position: -68px -275px;
+            background-repeat: no-repeat;
+            width: 24px;
+            height: 16px;
+        }
+        #search-keyboard:hover::before{
+            filter: brightness(0.7);
+        }
+        #search-recent::before{
+            content: '';
+            display: block;
+            background-image: url(./sp_main.png);
+            background-size: 422px 405px;
+            background-position: -211px -169px;
+            background-repeat: no-repeat;
+            width: 10px;
+            height: 6px;
+        }
+        #search-button::before{
+            content: '';
+            display: inline-block;
+            background-image: url(./sp_main.png);
+            background-size: 422px 405px;
+            background-position: -368px -71px;
+            background-repeat: no-repeat;
+            width: 25px;
+            height: 25px;
+        }
+        #main{
+            margin-top: 51px;
+            display: flex;
+        }
+        #main-left{
+            width: 830px;
+            margin-right: 30px;
+        }
+        #main-right{
+            width: 420px;
+        }
+        #main-left-ad, #main-right-ad{
+            background-color: gray;
+        }
+        aside[id$=ad]{/*ad로 아이디가 끝나는 애들*/
+            border-radius: 8px;
+        }
+        #main-left-ad{
+            height: 130px;
+            margin-bottom: 16px;
+        }
+        section[id^=main]{/*id가 main으로 시작하는 애들들*/
+            box-shadow: 0 0 0 1px #e3e5e8, 0 1px 2px 0 rgba(0,0,0,.04);
+            border-radius: 8px; 
+            margin-bottom: 16px;
+        }
+        
+        #main-login{
+            display: flex;
+            flex-flow: column;
+            height: 164px;
+            padding: 21px 20px 18px;
+            font-size: 1.4rem;
+        }
+        #main-login>div:first-of-type{
+            line-height: 20px;
+        }
+        #main-login-button{
+            margin-top: 13px;
+            padding: 17px 0;
+            border: 1px solod rgba(0, 0, 0,.06);
+            height: 56px;
+            border-radius: 4px;
+            background-color: #03c75a;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 16px;
+        }
+        #main-login-button i{
+            background-image: url(./sp_main.png);
+            background-size: 463px 440px;
+            background-position: 0px -301px;
+            background-repeat: no-repeat;
+            width: 72px;
+            height: 14px;
+            display: inline-block;
+            margin: 3px 8px 0 0;
+            vertical-align: -1px;
+        }
+        #main-login > div:last-of-type{
+            font-size: 1.3rem;
+        }
+        #main-login > div:last-of-type a{
+            text-decoration: none;
+            color: var(--color_caption2);
+            letter-spacing: -0.4px;
+        }
+        #main-login > div:last-of-type a:hover{
+            text-decoration: underline;
+        }
+        #main-login > div:last-of-type>a:nth-of-type(2)::before, #main-login > div:last-of-type>a:nth-of-type(2)::after{
+            content: '';
+            display: inline-block;
+            width: 1px;
+            height: 12px;
+            background-color: #d3d5d7;
+            background-color: var(--color_dot_divider);
+            margin: 4px 12px 0;
+        }
+        #main-right-ad{
+            height: 240px;
+        }
+        #main-weather, #main-stock{
+            padding: 0 18px;
+        }
+        .main-weather-and-stock > header{
+            height: 52px;
+            padding: 6px 0;
+        }
+        .main-weather-and-stock > div{
+            border-top: 1px solid var(--color_border_in);
+        }
+        #main-weather{
+            height: 236px;
+        }
+        #main-stock{
+            height: 236px;
+        }
+        #main-newstand{
+            height: 426px
+        }
+        .left-section header{
+            font-size: 1.6rem;
+            color:rgba(8,8,8,.5);
+            display: flex;
+            justify-content: flex-start;
+            line-height: 23px;
+            margin-bottom: 17px;
+        }
+        .left-section header .bold{
+            font-weight: bold;
+            color:black;
+        }
+        #main-newstand-gray{
+            display: flex;
+            justify-content: flex-start;
+            height: 50px;
+            padding: 12px 20px;
+            background-color: var(--color_option_bg);
+            border-radius: 4px;
+            font-size: 1.4rem;
+            line-height: 26px;
+        }
+        #main-newstand-gray .left{
+            flex: 1;
+            display: flex;
+        }
+        #main-newstand-gray .left> a:first-of-type{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            vertical-align: top;
+            align-content: space-around;
+            flex-wrap: wrap;
+        }
+        #main-newstand-gray .right{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 10px;
+        }
+        #main-newstand-gray .left > a:first-of-type::after{
+            content: '';
+            background: url(./sp_main.png);
+            background-size: 463px 440px;
+            background-position: -242px -184px;
+            background-repeat: no-repeat;
+            width: 9px;
+            height: 6px;
+            display: inline-block;
+            margin: 10px 0 0 5px;
+            vertical-align: top;
+        }
+        .left-section a{
+            text-decoration: none;
+            display: flex;
+            flex-flow: column;
+        }
+        #main-newstand-animation{
+            padding-left: 25px;
+            position: relative;
+            display: flex;
+        }
+        #main-newstand-animation::before{
+            content: "";
+            display: block;
+            position: absolute;
+            top: 7px;
+            left: 15px;
+            background-color: #d3d5d7;
+            background-color: var(--color_dot_divider);
+            width: 1px;
+            height: 12px;
+        }
+        #main-newstand-animation a:first-of-type{
+            position: relative;
+            right: 5px;
+            display: inline-block;
+            width: 70px;
+            vertical-align: 70px;
+            line-height: 26px;
+        }
+        
+        #main-newstand-animation a:first-of-type::after {
+            content: "";
+            background: url(./sp_main.png);
+            
+        }
+        #main-newstand-animation a:last-of-type {
+            text-overflow: ellipsis;
+            width: 450px;
+            white-space: nowrap;
+            display: inline-block;
+            overflow: hidden;
+        }
+        #main-newstand-top, #main-shopping-top{
+            flex: 1;
+            padding: 18px 20px;      
+            vertical-align: top; 
+        }
+        #main-newstand-top .dot{
+            display: block;
+        }
+        #main-newstand-top .dot::before{
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            background-color: #d3d5d7;
+            background-color: var(--color_dot_divider);
+            margin: 9px 7px 0;
+            border-radius: 50%;
+            vertical-align: 5px;
+        }
+        .left-section .slash, .left-section .dot{
+            font-size: 1.6rem;
+            color: rgba(8,8,8,.5);
+            font-weight: 800;
+        }
+        .left-section .slash{
+            position: relative;
+            padding-left: 26px;
+        }
+        .left-section .slash::before{
+            content: '';
+            display: inline-block;
+            position: absolute;
+            top: 4px;
+            left: 13px;
+            width: 1px;
+            height: 15px;
+            background-color: #d3d5d7;
+            background-color: var(--color_dot_divider);
+            transform: skewX(-15deg);
+        }
+        .left-section a:visited{
+            color:inherit;
+        }
+        .left-section a:hover{
+            text-decoration: underline;
+        }
+        #main-newstand-grid{
+            display: grid; /*그리드는 격자모양일때 쓰기 좋음*/
+            justify-content: center;
+            align-items: center;
+            height: 224px;
+            grid-gap: 1px;
+            grid-template-rows: repeat(4, 1fr);
+            width: 790px;
+            grid-template-columns: repeat(6, 1fr); 
+            background-color: var(--color_border_in);
+            border: 1px solid var(--color_border_in);
+            border-radius: 4px;
+            margin-top: 18px;
+        }
+        #main-newstand-grid> div{
+            height: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .left-section footer{
+            padding: 10px 0 11px;
+            border-top: 1px solid var(--color_border_in);
+            font-size: 1.3rem;
+            line-height: 35px;
+            font-weight: 600;
+            color:#606060;
+            color: var(--color_caption2);
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        .left-section footer .list, .left-section footer .grid{
+            position: absolute;
+            border: none;
+            cursor: pointer;
+            top: 0;
+            background-color: transparent;
+        }
+        .left-section footer .list{
+            right: 49px;
+            padding: 18px 9px 18px 20px;
+        }
+        .left-section footer .list::before{
+            display: inline-block;
+            content: '';
+            background: url(./sp_main.png);
+            background-size: 463px 440px;
+            background-position: -219px -376px;
+            background-repeat: no-repeat;
+            width: 20px;
+            height: 20px;
+        }
+        #main-newstand footer .list:hover::before{
+            filter: brightness(0.7);
+        }
+
+        .left-section footer .hot{
+            color:#9858f5
+        }
+
+        .left-section footer .grid{
+            right: 0;
+            padding: 18px 20px 18px 9px;
+        }
+        .left-section footer .grid::before{
+            display: inline-block;
+            content: '';
+            background-image: url(https://pm.pstatic.net/resources/asset/sp_main.b27083b1.png);
+            background-size: 463px 440px;
+            background-position: -401px -403px;
+            background-repeat: no-repeat;
+            width: 20px;
+            height: 20px;
+        }
+        .left-section footer .news{
+            color: var(--color_news);
+        }
+        .left-section footer .total{
+            color: rgba(96,96,96,.5);
+        }
+
+        .left-section footer .prev, .left-section footer .next{
+            
+            content: '';
+            width: 36px;
+            height: 36px;
+            border: 1px solid #dadcdf;
+            border: 1px solid var(--color_button_border);
+            background-color: #fff;
+            background-color: var(--color_button1_bg);
+            position: relative;
+            display: inline-block;
+            -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .06);
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .06);
+            border-radius: 50%;
+            vertical-align: top;
+            cursor: pointer;
+        }
+
+        .left-section footer .prev::before, .left-section footer .next::before{
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url(https://pm.pstatic.net/resources/asset/sp_main.b27083b1.png);
+            background-size: 463px 440px;
+            background-position: -452px -104px;
+            background-repeat: no-repeat;
+            width: 10px;
+            height: 12px;
+            margin: auto;
+        }
+        .left-section footer .text{
+            min-width:156px;
+            padding: 0 16px;
+        }
+        .left-section footer .prev::before{ 
+            transform: rotate(180deg);
+        }
+        #nav{
+            margin-top: 12px;
+        }
+        /*of child는 li말고 다른태그 나와도 체크함
+        of type은 li태그만 체크함*/
+        #nav > ul{
+            display: flex;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+        #nav a{
+            text-decoration: none;
+            text-align: center;
+        }
+        #nav a div{
+            position: relative;
+            display: inline-flex;
+            margin: 0 auto;
+            text-align: center;
+        }
+        #nav a div::after{
+            content: '';
+            z-index: 1;
+            position: relative;
+            margin: 2px;
+            display: inline-block;;
+            background-image: url(./sp_main.png);
+            background-size: 422px 405px;
+            background-repeat: no-repeat;
+            width: 40px;
+            height: 40px;
+        }
+        #nav li{
+            width: 64px;
+            margin-left: 4px;
+            display: flex;
+            justify-content: center;
+        }
+        #nav a:visited{
+            color: black;
+        }
+        #nav li:nth-of-type(1){
+            margin-left: 0;
+        }
+        #nav li a div::before{
+            content: '';
+            display: block;
+            position: absolute;
+            top: -2px;
+            left: -3px;
+            background-image: url(./sp_main.png);
+            background-size: 422px 405px;
+            background-position: -91px -127px;
+            background-repeat: no-repeat;
+            width: 44px;
+            height: 44px;
+        }
+        #nav li:nth-of-type(1) a div::after{
+            background-position: -184px -198px;
+        }
+        #nav li:nth-of-type(2) a div::after{
+            background-position: -35px -198px;
+        }
+        #nav li:nth-of-type(3) a div::after{
+            background-position: 1px -198px;
+        }
+        #nav li:nth-of-type(4) a div::after{
+            background-position: -24px -282px;
+        }
+        #nav li:nth-of-type(5) a div::after{
+            background-position: -244px -184px;
+        }
+        #nav li:nth-of-type(6) a div::after{
+            background-position: -110px -235px;
+        }
+        #nav li:nth-of-type(7) a div::after{
+            background-position: 1px -235px;
+        }
+        #nav li:nth-of-type(8) a div::after{
+            background-position: -243px 6px;
+            width: 38px;
+            height: 40px;
+        }
+        #nav li:nth-of-type(9) a div::after{
+            background-position: -147px -235px;
+        }
+        #nav li:nth-of-type(10) a div::after{
+            background-position: -243px -110px;
+        }
+        #nav li a span{
+            display: inline-block;
+            margin-top: 7px;
+        }
+        #main-shopping{
+            height: 560px;
+            display: flex;
+            flex-flow: column;
+        }
+        #main-shopping-top{
+            padding-top: 1px;
+        }
+        #main-shopping footer .text{
+            min-width: 176px;
+        }
+        #main-shopping-gray{
+            display: flex;
+        }
+        #main-shopping-gray .left{
+            width: 668px;
+            height: 50px;
+            padding: 15px 20px 14px;
+            display: flex;
+            background-color: var(--color_option_bg);
+        }
+        #main-shopping-gray .right{
+            margin-left: auto;
+            padding: 10px 0;
+        }
+        #main-shopping-grid{
+            margin-top: 18px;
+            display: grid;
+            grid-template-rows: 90px 95px 170px;
+            grid-template-columns: 1fr 1fr 1fr 1fr 250px;
+            column-gap: 20px;
+        }
+        #main-shopping-grid .item{
+            line-height: 20px;
+            letter-spacing: -.8px;
+            font-size: 1.3rem;
+        }
+        #main-shopping-grid .item>.image{
+            width: 115px;
+            height: 115px;
+            border-radius: 4px;
+            background-color: gray;
+            margin-bottom: 10px;
+        }
+        #main-shopping-grid .item>.text{
+            text-align: left;
+        }
+        .item:nth-child(1), .item:nth-child(2), .item:nth-child(3), .item:nth-child(4){
+            grid-row: 1 / 3;/*첫번째칸 포함 3번째칸 미만*/
+        }
+        .item:nth-child(5), .item:nth-child(6), .item:nth-child(11)>div:first-child{
+            padding: 10px 12px 5px;
+            border-radius: 4px;
+            border: 1px solid rgba(0,0,0,.05);
+            background: rgba(245,248,251,.6);
+        }
+        .item:nth-child(6){
+            margin: 11px 0;
+        }
+        .item:nth-child(11)>div:first-child{
+            height: 135px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -174,128 +815,7 @@
                     <span class="blind">알림</span>
                 </button>
             </div>
-            <style>
-                /*body중간에 style 태그 쓰면 안되는 이유
-                1. css가 html보다 먼저 해석되기 때문에 먼저 해석된 css가 뒤에 해석된 css를 덮어씀
-                2. css가 html보다 먼저 해석되기 때문에 렌더링이 느려짐
-                */
-                #search > form{
-                    display: inline-flex;
-                    width: 700px;
-                    height: 60px;
-                    border: 1px solid #03c75a;
-                    border-radius: 33px;
-                    text-align: left;
-                }
-                #search >form:hover{
-                    box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
-                }
-                
-                #search > form > input{
-                    background-color: white;
-                    width: 480px;
-                    height: 100%;
-                    padding: 17px 0;
-                    border: none;
-                    outline: none;
-                }
-                #search > form a{
-                    width: 68px;
-                    height: 100%;
-                    padding: 17px;
-                    margin-right: 12px;
-                }
-                #search-svg::after{
-                    display: none;
-                }
-                #search>form:focus-within #search-svg::after{
-                    position: absolute;
-                    content: '';
-                    width: 1px;
-                    height: 20px;
-                    background-color: #e4e4e4;
-                    display: inline-block;
-                    right: 0;
-                    top: 20px;
-                }
-                
-                #search-svg{
-                    display: inline-flex;
-                    position: relative;
-                    justify-content: center;
-                    align-items: center;
-                    width: 68px;
-                    margin-right: 12px;
-                    height: 100%;
-                    padding-left: 10px;
-                }
-                #search-svg svg{
-                    width: 18px;
-                    height: 18px;
-                    fill: #03c75a
-                }
-                #search-input{
-                    width: 480px;
-                    padding: 17px 0;
-                    font-size: 2rem;
-                    line-height: 24px;
-                    font-weight: bold;
-                    border: none;
-                    outline: none;
-                }
-                #search-input::placeholder{
-                    color: white;
-                }
-                #search-input:focus::placeholder{
-                    color: rgb(230, 230, 230)
-                }
-                #search-right{
-                    display: flex;
-                    flex: 1;
-                    align-items: stretch;
-                    justify-content: center;
-
-                }
-
-                #search-keyboard, #search-recent, #search-button{
-                    background: transparent;
-                    border: none;
-                    cursor: pointer;
-                }
-                #search-keyboard::before{
-                    content: '';
-                    display: block;
-                    background-image: url(./sp_main.png);
-                    background-size: 422px 405px;
-                    background-position: -68px -275px;
-                    background-repeat: no-repeat;
-                    width: 24px;
-                    height: 16px;
-                }
-                #search-keyboard:hover::before{
-                    filter: brightness(0.7);
-                }
-                #search-recent::before{
-                    content: '';
-                    display: block;
-                    background-image: url(./sp_main.png);
-                    background-size: 422px 405px;
-                    background-position: -211px -169px;
-                    background-repeat: no-repeat;
-                    width: 10px;
-                    height: 6px;
-                }
-                #search-button::before{
-                    content: '';
-                    display: inline-block;
-                    background-image: url(./sp_main.png);
-                    background-size: 422px 405px;
-                    background-position: -368px -71px;
-                    background-repeat: no-repeat;
-                    width: 25px;
-                    height: 25px;
-                }
-            </style>
+            
             <div id="search">
                 <form action="">
                     <a id="search-svg" href="#">
@@ -317,101 +837,6 @@
                 </form>
             </div>
 
-            <style> 
-                #nav{
-                    margin-top: 12px;
-                }
-                /*of child는 li말고 다른태그 나와도 체크함
-                of type은 li태그만 체크함*/
-                #nav > ul{
-                    display: flex;
-                    justify-content: center;
-                    font-size: 1.4rem;
-                }
-                #nav a{
-                    text-decoration: none;
-                    text-align: center;
-                }
-                #nav a div{
-                    position: relative;
-                    display: inline-flex;
-                    margin: 0 auto;
-                    text-align: center;
-                }
-                #nav a div::after{
-                    content: '';
-                    z-index: 1;
-                    position: relative;
-                    margin: 2px;
-                    display: inline-block;;
-                    background-image: url(./sp_main.png);
-                    background-size: 422px 405px;
-                    background-repeat: no-repeat;
-                    width: 40px;
-                    height: 40px;
-                }
-                #nav li{
-                    width: 64px;
-                    margin-left: 4px;
-                    display: flex;
-                    justify-content: center;
-                }
-                #nav a:visited{
-                    color: black;
-                }
-                #nav li:nth-of-type(1){
-                    margin-left: 0;
-                }
-                #nav li a div::before{
-                    content: '';
-                    display: block;
-                    position: absolute;
-                    top: -2px;
-                    left: -3px;
-                    background-image: url(./sp_main.png);
-                    background-size: 422px 405px;
-                    background-position: -91px -127px;
-                    background-repeat: no-repeat;
-                    width: 44px;
-                    height: 44px;
-                }
-                #nav li:nth-of-type(1) a div::after{
-                    background-position: -184px -198px;
-                }
-                #nav li:nth-of-type(2) a div::after{
-                    background-position: -35px -198px;
-                }
-                #nav li:nth-of-type(3) a div::after{
-                    background-position: 1px -198px;
-                }
-                #nav li:nth-of-type(4) a div::after{
-                    background-position: -24px -282px;
-                }
-                #nav li:nth-of-type(5) a div::after{
-                    background-position: -244px -184px;
-                }
-                #nav li:nth-of-type(6) a div::after{
-                    background-position: -110px -235px;
-                }
-                #nav li:nth-of-type(7) a div::after{
-                    background-position: 1px -235px;
-                }
-                #nav li:nth-of-type(8) a div::after{
-                    background-position: -243px 6px;
-                    width: 38px;
-                    height: 40px;
-                }
-                #nav li:nth-of-type(9) a div::after{
-                    background-position: -147px -235px;
-                }
-                #nav li:nth-of-type(10) a div::after{
-                    background-position: -243px -110px;
-                }
-                #nav li a span{
-                    display: inline-block;
-                    margin-top: 7px;
-                }
-            </style>
 
             <nav id="nav">
                 <ul>
@@ -477,373 +902,6 @@
                     </li>  
                 </ul>
             </nav>
-            <style>
-                #main{
-                    margin-top: 51px;
-                    display: flex;
-                }
-                #main-left{
-                    width: 830px;
-                    margin-right: 30px;
-                }
-                #main-right{
-                    width: 420px;
-                }
-                #main-left-ad, #main-right-ad{
-                    background-color: gray;
-                }
-                aside[id$=ad]{/*ad로 아이디가 끝나는 애들*/
-                    border-radius: 8px;
-                }
-                #main-left-ad{
-                    height: 130px;
-                    margin-bottom: 16px;
-                }
-                section[id^=main]{/*id가 main으로 시작하는 애들들*/
-                    box-shadow: 0 0 0 1px #e3e5e8, 0 1px 2px 0 rgba(0,0,0,.04);
-                    border-radius: 8px; 
-                    margin-bottom: 16px;
-                }
-                
-                #main-login{
-                    display: flex;
-                    flex-flow: column;
-                    height: 164px;
-                    padding: 21px 20px 18px;
-                    font-size: 1.4rem;
-                }
-                #main-login>div:first-of-type{
-                    line-height: 20px;
-                }
-                #main-login-button{
-                    margin-top: 13px;
-                    padding: 17px 0;
-                    border: 1px solod rgba(0, 0, 0,.06);
-                    height: 56px;
-                    border-radius: 4px;
-                    background-color: #03c75a;
-                    color: white;
-                    text-decoration: none;
-                    margin-bottom: 16px;
-                }
-                #main-login-button i{
-                    background-image: url(./sp_main.png);
-                    background-size: 463px 440px;
-                    background-position: 0px -301px;
-                    background-repeat: no-repeat;
-                    width: 72px;
-                    height: 14px;
-                    display: inline-block;
-                    margin: 3px 8px 0 0;
-                    vertical-align: -1px;
-                }
-                #main-login > div:last-of-type{
-                    font-size: 1.3rem;
-                }
-                #main-login > div:last-of-type a{
-                    text-decoration: none;
-                    color: var(--color_caption2);
-                    letter-spacing: -0.4px;
-                }
-                #main-login > div:last-of-type a:hover{
-                    text-decoration: underline;
-                }
-                #main-login > div:last-of-type>a:nth-of-type(2)::before, #main-login > div:last-of-type>a:nth-of-type(2)::after{
-                    content: '';
-                    display: inline-block;
-                    width: 1px;
-                    height: 12px;
-                    background-color: #d3d5d7;
-                    background-color: var(--color_dot_divider);
-                    margin: 4px 12px 0;
-                }
-                #main-right-ad{
-                    height: 240px;
-                }
-                #main-weather, #main-stock{
-                    padding: 0 18px;
-                }
-                .main-weather-and-stock > header{
-                    height: 52px;
-                    padding: 6px 0;
-                }
-                .main-weather-and-stock > div{
-                    border-top: 1px solid var(--color_border_in);
-                }
-                #main-weather{
-                    height: 236px;
-                }
-                #main-stock{
-                    height: 236px;
-                }
-                #main-newstand{
-                    height: 426px
-                }
-                .left-section header{
-                    font-size: 1.6rem;
-                    color:rgba(8,8,8,.5);
-                    display: flex;
-                    justify-content: flex-start;
-                    line-height: 23px;
-                    margin-bottom: 17px;
-                }
-                .left-section header .bold{
-                    font-weight: bold;
-                    color:black;
-                }
-                #main-newstand-gray{
-                    display: flex;
-                    justify-content: flex-start;
-                    height: 50px;
-                    padding: 12px 20px;
-                    background-color: var(--color_option_bg);
-                    border-radius: 4px;
-                    font-size: 1.4rem;
-                    line-height: 26px;
-                }
-                #main-newstand-gray .left{
-                    flex: 1;
-                    display: flex;
-                }
-                #main-newstand-gray .left> a:first-of-type{
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    vertical-align: top;
-                    align-content: space-around;
-                    flex-wrap: wrap;
-                }
-                #main-newstand-gray .right{
-                    display: flex;
-                    justify-content: flex-end;
-                    align-items: center;
-                    gap: 10px;
-                }
-                #main-newstand-gray .left > a:first-of-type::after{
-                    content: '';
-                    background: url(./sp_main.png);
-                    background-size: 463px 440px;
-                    background-position: -242px -184px;
-                    background-repeat: no-repeat;
-                    width: 9px;
-                    height: 6px;
-                    display: inline-block;
-                    margin: 10px 0 0 5px;
-                    vertical-align: top;
-                }
-                .left-section a{
-                    text-decoration: none;
-                    display: flex;
-                    flex-flow: column;
-                }
-                #main-newstand-animation{
-                    padding-left: 25px;
-                    position: relative;
-                    display: flex;
-                }
-                #main-newstand-animation::before{
-                    content: "";
-                    display: block;
-                    position: absolute;
-                    top: 7px;
-                    left: 15px;
-                    background-color: #d3d5d7;
-                    background-color: var(--color_dot_divider);
-                    width: 1px;
-                    height: 12px;
-                }
-                #main-newstand-animation a:first-of-type{
-                    position: relative;
-                    right: 5px;
-                    display: inline-block;
-                    width: 70px;
-                    vertical-align: 70px;
-                    line-height: 26px;
-                }
-                
-                #main-newstand-animation a:first-of-type::after {
-                    content: "";
-                    background: url(./sp_main.png);
-                    
-                }
-                #main-newstand-animation a:last-of-type {
-                    text-overflow: ellipsis;
-                    width: 450px;
-                    white-space: nowrap;
-                    display: inline-block;
-                    overflow: hidden;
-                }
-                #main-newstand-top, #main-shopping-top{
-                    flex: 1;
-                    padding: 18px 20px;      
-                    vertical-align: top; 
-                }
-                #main-newstand-top .dot{
-                    display: block;
-                }
-                #main-newstand-top .dot::before{
-                    content: '';
-                    display: inline-block;
-                    width: 4px;
-                    height: 4px;
-                    background-color: #d3d5d7;
-                    background-color: var(--color_dot_divider);
-                    margin: 9px 7px 0;
-                    border-radius: 50%;
-                    vertical-align: 5px;
-                }
-                .left-section .slash, .left-section .dot{
-                    font-size: 1.6rem;
-                    color: rgba(8,8,8,.5);
-                    font-weight: 800;
-                }
-                .left-section .slash{
-                    position: relative;
-                    padding-left: 26px;
-                }
-                .left-section .slash::before{
-                    content: '';
-                    display: inline-block;
-                    position: absolute;
-                    top: 4px;
-                    left: 13px;
-                    width: 1px;
-                    height: 15px;
-                    background-color: #d3d5d7;
-                    background-color: var(--color_dot_divider);
-                    transform: skewX(-15deg);
-                }
-                .left-section a:visited{
-                    color:inherit;
-                }
-                .left-section a:hover{
-                    text-decoration: underline;
-                }
-                #main-newstand-grid{
-                    display: grid; /*그리드는 격자모양일때 쓰기 좋음*/
-                    justify-content: center;
-                    align-items: center;
-                    height: 224px;
-                    grid-gap: 1px;
-                    grid-template-rows: repeat(4, 1fr);
-                    width: 790px;
-                    grid-template-columns: repeat(6, 1fr); 
-                    background-color: var(--color_border_in);
-                    border: 1px solid var(--color_border_in);
-                    border-radius: 4px;
-                    margin-top: 18px;
-                }
-                #main-newstand-grid> div{
-                    height: 100%;
-                    background-color: white;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-                .left-section footer{
-                    padding: 10px 0 11px;
-                    border-top: 1px solid var(--color_border_in);
-                    font-size: 1.3rem;
-                    line-height: 35px;
-                    font-weight: 600;
-                    color:#606060;
-                    color: var(--color_caption2);
-                    display: flex;
-                    justify-content: center;
-                    position: relative;
-                }
-                .left-section footer .list, .left-section footer .grid{
-                    position: absolute;
-                    border: none;
-                    cursor: pointer;
-                    top: 0;
-                    background-color: transparent;
-                }
-                .left-section footer .list{
-                    right: 49px;
-                    padding: 18px 9px 18px 20px;
-                }
-                .left-section footer .list::before{
-                    display: inline-block;
-                    content: '';
-                    background: url(./sp_main.png);
-                    background-size: 463px 440px;
-                    background-position: -219px -376px;
-                    background-repeat: no-repeat;
-                    width: 20px;
-                    height: 20px;
-                }
-                #main-newstand footer .list:hover::before{
-                    filter: brightness(0.7);
-                }
-
-                .left-section footer .hot{
-                    color:#9858f5
-                }
-
-                .left-section footer .grid{
-                    right: 0;
-                    padding: 18px 20px 18px 9px;
-                }
-                .left-section footer .grid::before{
-                    display: inline-block;
-                    content: '';
-                    background-image: url(https://pm.pstatic.net/resources/asset/sp_main.b27083b1.png);
-                    background-size: 463px 440px;
-                    background-position: -401px -403px;
-                    background-repeat: no-repeat;
-                    width: 20px;
-                    height: 20px;
-                }
-                .left-section footer .news{
-                    color: var(--color_news);
-                }
-                .left-section footer .total{
-                    color: rgba(96,96,96,.5);
-                }
-
-                .left-section footer .prev, .left-section footer .next{
-                    
-                    content: '';
-                    width: 36px;
-                    height: 36px;
-                    border: 1px solid #dadcdf;
-                    border: 1px solid var(--color_button_border);
-                    background-color: #fff;
-                    background-color: var(--color_button1_bg);
-                    position: relative;
-                    display: inline-block;
-                    -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .06);
-                    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .06);
-                    border-radius: 50%;
-                    vertical-align: top;
-                    cursor: pointer;
-                }
-
-                .left-section footer .prev::before, .left-section footer .next::before{
-                    content: "";
-                    display: block;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background-image: url(https://pm.pstatic.net/resources/asset/sp_main.b27083b1.png);
-                    background-size: 463px 440px;
-                    background-position: -452px -104px;
-                    background-repeat: no-repeat;
-                    width: 10px;
-                    height: 12px;
-                    margin: auto;
-                }
-                .left-section footer .text{
-                    min-width:156px;
-                    padding: 0 16px;
-                }
-                .left-section footer .prev::before{ 
-                    transform: rotate(180deg);
-                }
-            </style>
             <main id="main">
                 <div id="main-left">
                     <aside id="main-left-ad"></aside>
@@ -893,43 +951,6 @@
                             <button class="grid"><span class="blind">격자보기</span></button>
                         </footer>
                     </section>
-                    <style>
-                        #main-shopping{
-                            height: 560px;
-                            display: flex;
-                            flex-flow: column;
-                        }
-                        #main-shopping-top{
-                            padding-top: 1px;
-                        }
-                        #main-shopping footer .text{
-                            min-width: 176px;
-                        }
-                        #main-shopping-gray{
-                            display: flex;
-                        }
-                        #main-shopping-gray .left{
-                            width: 668px;
-                            height: 50px;
-                            padding: 15px 20px 14px;
-                            display: flex;
-                            background-color: var(--color_option_bg);
-                        }
-                        #main-shopping-gray .right{
-                            margin-left: auto;
-                            padding: 10px 0;
-                        }
-                        #main-shopping-grid{
-                            margin-top: 20px;
-                            display: grid;
-                            grid-template-rows: 90px 95px 185px;
-                            grid-template-columns: 1fr 1fr 1fr 1fr 250px;
-                            column-gap: 20px;
-                        }
-                        .item:nth-child(1), .item:nth-child(2), .item:nth-child(3), .item:nth-child(4){
-                            grid-row: 1 / 3;/*첫번째칸 포함 3번째칸 미만*/
-                        }
-                    </style>
                     <section id="main-shopping" class="left-section">
                         <div id="main-shopping-top">
                             <header>
@@ -953,17 +974,42 @@
                                 </div>
                             </div>
                             <div id="main-shopping-grid">
-                                <div class="item">1</div>
-                                <div class="item">2</div>
-                                <div class="item">3</div>
-                                <div class="item">4</div>
+                                <!-- 딱떨어지지 않는 그리드 만들기
+                                 일단 작게 만들고 grid-row로 합쳐줌(엑셀에서 셀 병합이랑 비슷)
+                                -->
+                                <div class="item">
+                                    <div class="image"></div>
+                                    <div class="text">독보적인 퀄리티 우린 품격을 입어요</div>
+                                </div>
+                                <div class="item">
+                                    <div class="image"></div>
+                                    <div class="text">독보적인 퀄리티 우린 품격을 입어요</div>
+                                </div><div class="item">
+                                    <div class="image"></div>
+                                    <div class="text">독보적인 퀄리티 우린 품격을 입어요</div>
+                                </div><div class="item">
+                                    <div class="image"></div>
+                                    <div class="text">독보적인 퀄리티 우린 품격을 입어요</div>
+                                </div>
                                 <div class="item">5</div>
                                 <div class="item">6</div>
-                                <div class="item">7</div>
-                                <div class="item">8</div>
-                                <div class="item">9</div>
-                                <div class="item">10</div>
-                                <div class="item">11</div>
+                                <div class="item">
+                                    <div class="image"></div>
+                                    <div class="text">독보적인 퀄리티 우린 품격을 입어요</div>
+                                </div><div class="item">
+                                    <div class="image"></div>
+                                    <div class="text">독보적인 퀄리티 우린 품격을 입어요</div>
+                                </div><div class="item">
+                                    <div class="image"></div>
+                                    <div class="text">독보적인 퀄리티 우린 품격을 입어요</div>
+                                </div><div class="item">
+                                    <div class="image"></div>
+                                    <div class="text">독보적인 퀄리티 우린 품격을 입어요</div>
+                                </div>
+                                <div class="item">
+                                    <div></div>
+                                    <div>아울렛 쇼핑 득템 찬스! 시즌오프세일</div>
+                                </div>
                             </div>
                         </div>
                         
