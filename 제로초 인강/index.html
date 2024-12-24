@@ -600,15 +600,120 @@
                     padding: 12px 20px;
                     background-color: var(--color_option_bg);
                     border-radius: 4px;
+                    font-size: 1.4rem;
+                    line-height: 26px;
+                }
+                #main-newstand-gray .left{
+                    flex: 1;
+                    display: flex;
+                }
+                #main-newstand-gray .left> a:first-of-type{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    vertical-align: top;
+                    align-content: space-around;
+                    flex-wrap: wrap;
+                }
+                #main-newstand-gray .right{
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    gap: 10px;
+                }
+                #main-newstand-gray .left > a:first-of-type::after{
+                    content: '';
+                    background: url(./sp_main.png);
+                    background-size: 463px 440px;
+                    background-position: -242px -184px;
+                    background-repeat: no-repeat;
+                    width: 9px;
+                    height: 6px;
+                    display: inline-block;
+                    margin: 10px 0 0 5px;
+                    vertical-align: top;
                 }
                 #main-newstand a{
                     text-decoration: none;
                     display: flex;
                     flex-flow: column;
                 }
+                #main-newstand-animation{
+                    padding-left: 25px;
+                    position: relative;
+                    display: flex;
+                }
+                #main-newstand-animation::before{
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: 7px;
+                    left: 15px;
+                    background-color: #d3d5d7;
+                    background-color: var(--color_dot_divider);
+                    width: 1px;
+                    height: 12px;
+                }
+                #main-newstand-animation a:first-of-type{
+                    position: relative;
+                    right: 5px;
+                    display: inline-block;
+                    width: 70px;
+                    vertical-align: 70px;
+                    line-height: 26px;
+                }
+                
+                #main-newstand-animation a:first-of-type::after {
+                    content: "";
+                    background: url(./sp_main.png);
+                    
+                }
+                #main-newstand-animation a:last-of-type {
+                    text-overflow: ellipsis;
+                    width: 450px;
+                    white-space: nowrap;
+                    display: inline-block;
+                    overflow: hidden;
+                }
                 #main-newstand-top{
                     flex: 1;
-                    padding: 18px 20px;
+                    padding: 18px 20px;      
+                    vertical-align: top; 
+                }
+                #main-newstand-top .dot{
+                    display: block;
+                }
+                #main-newstand-top .dot::before{
+                    content: '';
+                    display: inline-block;
+                    width: 4px;
+                    height: 4px;
+                    background-color: #d3d5d7;
+                    background-color: var(--color_dot_divider);
+                    margin: 9px 7px 0;
+                    border-radius: 50%;
+                    vertical-align: 5px;
+                }
+                #main-newstand-top .slash, #main-newstand-top .dot{
+                    font-size: 1.6rem;
+                    color: rgba(8,8,8,.5);
+                    font-weight: 800;
+                }
+                #main-newstand-top .slash{
+                    position: relative;
+                    padding-left: 26px;
+                }
+                #main-newstand-top .slash::before{
+                    content: '';
+                    display: inline-block;
+                    position: absolute;
+                    top: 4px;
+                    left: 13px;
+                    width: 1px;
+                    height: 15px;
+                    background-color: #d3d5d7;
+                    background-color: var(--color_dot_divider);
+                    transform: skewX(-15deg);
                 }
                 #main-newstand a:visited{
                     color:inherit;
@@ -649,20 +754,22 @@
                         <div id="main-newstand-top">
                             <header>
                                 <a href="#" class="bold">뉴스스탠드</a>
-                                <a href="#">언론사편집</a>
-                                <a href="#">엔터</a>
-                                <a href="#">스포츠</a>
-                                <a href="#">경제</a>
+                                <a href="#" class="dot">언론사편집</a>
+                                <a href="#" class="slash">엔터</a>
+                                <a href="#" class="slash">스포츠</a>
+                                <a href="#" class="slash">경제</a>
                             </header>
                             <div id="main-newstand-gray">
-                                <div>
+                                <div class="left">
                                     <a href="#">전체언론사</a>
-                                    <a href="#">연합뉴스</a>
-                                    <a href="#">뉴스제목뉴스제목뉴스제목뉴스제목뉴스제목뉴스제목뉴스제목뉴스제목뉴스제목뉴스제목뉴스제목</a>
+                                    <div id="main-newstand-animation">
+                                        <a href="#">연합뉴스</a>
+                                        <a href="#">뉴스제목뉴스제목뉴스제목뉴스제목뉴스제목뉴스제목뉴스제목뉴스제목뉴스제목뉴스제목뉴스제목</a>
+                                    </div>
                                 </div>
-                                <div>
-                                    <a href="#">뉴스스탠드</a>
-                                    <a href="#">뉴스홈</a>
+                                <div class="right" style="gap: 2px;">
+                                    <a href="#">뉴스스탠드</a> <span style="color:#606060 ;">|</span>
+                                    <a href="#" class="bold">뉴스홈</a>
                                 </div>
                             </div>
                             <div id="main-newstand-grid">
