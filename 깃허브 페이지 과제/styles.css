@@ -1,0 +1,49 @@
+*{
+    /*width가 패딩이랑 보더 포함한 전체 너비가리킴(마진제외)*/
+    box-sizing: border-box;
+}
+header, main{
+    background-color: #656565;
+}
+header{
+    height: 78px;
+    border: 1px solid black;
+    font-size: 18px;
+}
+main{
+    height: 700px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;;
+}
+#header-nav{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 8px;
+}
+#header-left-menu > ul a, #header-right-menu >ul a{
+    text-decoration: none;
+    color: white;
+}
+#header-left-menu > ul a img{
+    height: 22px;
+}
+#header-left-menu > ul, #header-right-menu, #header-right-menu >ul{
+    list-style: none;
+    display: flex;
+    gap: 14px;
+}
+#header-right-menu > ul{
+    margin-right: 100px;
+    padding-left: 0px;
+}
+
+#header-right-menu > #search-bar{
+    width: 200px;
+    height: 21.33px;
+    margin: 20px;
+}
+
+#main-left-area, #main-right-area{
+    margin: 20px;
+}
