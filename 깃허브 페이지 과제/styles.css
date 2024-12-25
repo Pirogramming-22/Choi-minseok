@@ -2,6 +2,10 @@
     /*width가 패딩이랑 보더 포함한 전체 너비가리킴(마진제외)*/
     box-sizing: border-box;
 }
+body {
+    width: 1710px; /* 전체 너비를 고정 */
+    margin: 0 auto; /* 화면 중앙에 정렬 */
+  }
 .white{
     color: aliceblue;
 }
@@ -85,7 +89,6 @@ main{
     border: none;
     color: white;
 }
-
 #main-left-area, #main-right-area{
     margin: 20px;
 }
@@ -127,6 +130,13 @@ main{
     margin: 10px 0 20px;
     padding: 0 10px;
 }
+#main-right-area >form #username:focus, #main-right-area >form #email:focus, #main-right-area >form #password:focus{
+    
+    border-color: blue; /* 포커스 되었을 때 테두리 색상 변경 */
+    background-color: #e0f7fa; /* 포커스 되었을 때 배경 색상 변경 */
+    
+}
+
 #main-right-area >form label{
     font-weight: 500;
 }
