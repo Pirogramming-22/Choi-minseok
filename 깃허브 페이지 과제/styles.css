@@ -3,7 +3,7 @@
     box-sizing: border-box;
 }
 body {
-    width: 1710px; /* 전체 너비를 고정 */
+    width: 1705px; /* 전체 너비를 고정 */
     margin: 0 auto; /* 화면 중앙에 정렬 */
   }
 .white{
