@@ -243,23 +243,23 @@ footer #ema{
     }
 
 
-    #pamain .main-section-portfolio{
+    #pmain .main-section-portfolio{
         height: 335px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    #pamain .main-section-portfolio img{
+    #pmain .main-section-portfolio img{
         height: 170px;
         width: 250px;
         display: block;
         margin: 20px auto;
     }
-    #pamain .main-section-portfolio #portfolio-text{
+    #pmain .main-section-portfolio #portfolio-text{
         text-align: center;
         margin-left: 0px;
     }
-    #pamain .main-section-portfolio #portfolio-text h1{
+    #pmain .main-section-portfolio #portfolio-text h1{
         font-size: 25px;
         font-weight: 500;
         margin-bottom: 10px;
