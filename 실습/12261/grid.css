@@ -1,0 +1,13 @@
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /*각자가 200px넘을것 같으면 다음줄로 보내버림*/
+    gap: 10px;
+    background-color: aliceblue;
+    padding: 20px;
+}
+.grid-item{
+    background-color: aquamarine;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}

@@ -1,0 +1,30 @@
+.flex-container{
+    display: flex;
+    justify-content: space-around; /*justify content: 수평간걱*/
+    align-items: center; /*align-items: 수직간격 정렬*/
+    flex-wrap: wrap; /*flex-wrap: 하위요소가 부모값보다 넘처나면 줄바꿈*/
+    background-color: antiquewhite;
+    padding: 20px;
+}
+
+.flex-item{
+    flex: 1 1 calc(33.33% - 60px); /*flex-grow: 1, flex-shrink: 1, flex-basis: 33.33% - 60px*/
+    /*남는 공간을 얼마나 차지할지 / 공간이 부족할 때 얼마나 줄어들지 / 기본 크기*/
+    background-color: blue;
+    color: red;
+    padding: 20px;
+    text-align: center;
+    margin: 10px;
+}
+
+@media(max-width: 768px){ /*테블릿 기준의 사이즈 = 768보다 작을때*/
+    .flex-item{
+        flex: 1 1 calc(50% - 60px); /*한줄에 두개(50%) 다음줄에 3이 한줄 다 차지하고 있음 -> 늘어날 수 있게 1했기때문문*/
+    }
+}
+
+@media(max-width: 480px){ /*모바일 기준의 사이즈*/
+    .flex-item{
+        flex: 1 1 calc(100%);
+    }
+}
