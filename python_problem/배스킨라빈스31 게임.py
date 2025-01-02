@@ -34,5 +34,4 @@ def brGame():
             print(f'{player} win!')
             break
 
-
-
+brGame()
