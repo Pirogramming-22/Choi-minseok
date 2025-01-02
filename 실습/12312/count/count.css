@@ -1,0 +1,17 @@
+#main{
+    display: flex;
+    justify-content: center;
+    width: 100dvh;
+    height: 100dvh;
+    align-items: center;
+    gap: 3rem;
+    font-size: 5rem;
+}
+
+#minus_button, #plus_button{
+    padding-top: 1rem;
+    cursor: pointer;
+}
+#minus_button:hover, #plus_button:hover{
+    opacity: 0.5;
+}
