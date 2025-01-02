@@ -19,6 +19,7 @@ while num!=31:
         if num==31:
             break
     if num==31:
+        print(f'{player} win!')
         break
     playerFlag+=1
     if playerFlag%2==0:
