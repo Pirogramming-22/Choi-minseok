@@ -1,0 +1,69 @@
+#stopwatch{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: beige;
+    padding: 20px;
+    border-radius: 20px;
+    width: 50vh;
+    height: 50vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+#watch-time{
+    width: 40vh;
+    height: 10vh;
+    background-color: white;
+    border-radius: 20px;
+    border: 5px solid black;
+    text-align: center;
+    line-height: 10vh;
+    font-size: 44px;
+}
+#btns{
+    display: flex;
+    justify-content: space-around;
+    width: 40vh;
+    margin: 20px auto;
+}
+.btn{
+    width: 7vh;
+    height: 7vh;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+#records{
+    background-color:darkseagreen;
+    width: 40vh;
+    height: 20vh;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow-y: scroll;
+}
+.record-header,  .record-list{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 2px solid black;
+    padding: 5px 0;
+}
+#record-data{
+    width: 100%;
+    padding: 5px 0;
+}
+.btn-delete{
+    border-radius: 20px;
+    border: none;
+}
