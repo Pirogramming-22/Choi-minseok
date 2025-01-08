@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'blog', # blog 앱을 추가해줍니다.
 ]
 
 MIDDLEWARE = [
