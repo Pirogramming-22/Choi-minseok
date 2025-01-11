@@ -1,0 +1,7 @@
+<h1>리뷰 작성</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">저장</button>
+</form>
+<a href="{% url 'reviews:index' %}">취소</a>

@@ -1,0 +1,12 @@
+<h1>{{ review.title }}</h1>
+<p>감독: {{ review.director }}</p>
+<p>주연: {{ review.actors }}</p>
+<p>장르: {{ review.genre }}</p>
+<p>별점: {{ review.rating }}⭐</p>
+<p>러닝타임: {{ review.running_time }}분</p>
+<p>개봉년도: {{ review.release_year }}</p>
+<p>리뷰 내용: {{ review.content }}</p>
+
+<a href="{% url 'reviews:review_update' review.pk %}">수정</a> |
+<a href="{% url 'reviews:review_delete' review.pk %}">삭제</a> |
+<a href="{% url 'reviews:index' %}">my Movie reviews</a>
