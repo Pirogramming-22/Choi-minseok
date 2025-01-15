@@ -1,0 +1,38 @@
+{%extends './base.html'%}
+{%load static%}
+{%block css%}
+<link rel="stylesheet" href="{% static 'idea/css/reset.css' %}">
+<link rel="stylesheet" href="{% static 'idea/css/styles.css' %}">
+<link rel="stylesheet" href="{% static 'idea/css/idea_detail.css' %}">
+{%endblock css%}
+
+{%block main-name %}
+  <h1>{{dvt.name}}</h1>
+{%endblock main-name %}
+
+{%block main-content %}
+<div class="develop-detail">
+  <p>{{dvt.content|linebreaksbr}}</p>
+</div>
+<div>
+  <p>이 개발툴이 사용된 아이디어</p>
+  <ul class="dvt-used">
+    {% for idea in dvt.idea_set.all %}
+    <li><a href="{% url 'idea_detail' idea.pk %}">{{idea.title}}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+<div class="main-another">
+  <a class="udud" href="{% url 'develop_update' dvt.pk %}">수정하기</a>
+  <a class="udud" href="{% url 'develop_delete' dvt.pk %}">삭제하기</a>
+  <a href="{% url 'develop_list' %}">목록으로 돌아가기</a>
+</div>
+{%endblock main-content%}
+
+{% comment %} class Devtool(models.Model):
+  name=models.CharField(max_length=50)
+  kind=models.CharField(max_length=50)
+  content=models.TextField()
+
+  def __str__(self):
+    return self.name {% endcomment %}

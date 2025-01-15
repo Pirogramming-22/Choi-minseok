@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+nav{
+  padding: 20px 7%;
+  border-bottom: 1px solid black;
+}
+#nav-links{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+main{
+  margin: 20px 5%;
+  border-radius: 20px;
+  height: 800px;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-name{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color:blueviolet;
+  margin: 30px 0;
+}

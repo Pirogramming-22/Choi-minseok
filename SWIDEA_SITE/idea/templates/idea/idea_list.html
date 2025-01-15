@@ -1,0 +1,79 @@
+{%extends './base.html'%}
+{%load static%}
+{%block css%}
+<link rel="stylesheet" href="{% static 'idea/css/reset.css' %}">
+<link rel="stylesheet" href="{% static 'idea/css/styles.css' %}">
+<link rel="stylesheet" href="{% static 'idea/css/idea_list.css' %}">
+{%endblock css%}
+
+{%block main-name %}
+  <h1>IDEA List</h1>
+  <button class="now-order" id="time-order" onclick="sortIdeas('time')">등록순</button>
+  <button id="title-order" onclick="sortIdeas('title')">이룸순</button>
+  <button id="interest-order"  onclick="sortIdeas('interest')">관심도순</button>
+  <button id="timeReverse-order"  onclick="sortIdeas('timeReverse')">최신순</button>
+{%endblock main-name %}
+
+{%block main-content %}
+{% for idea in ideas %}
+
+<div class="idea-container" data-title="{{ idea.title }}" data-interest="{{ idea.interest }}">
+  <img src="{{idea.image.url}}" width=170, height=190>
+  <a href="{%url 'idea_detail' idea.id%}"><h2>{{idea.title}}</h2></a>
+  <a href="{%url 'develop_detail' idea.devtool.id%}"><p>예상 개발 툴 : {{idea.devtool.name}}</p></a>
+  <div style="display: flex; gap:5px;">
+    <a href="#">-</a>   
+    <p>관심도 : {{idea.interest}}</p>    
+    <a href="#">+</a>
+  </div>
+</div>
+
+{% endfor %}
+{%endblock main-content%}
+
+{%block js%}
+<script>
+  const originalIdeas = Array.from(document.getElementsByClassName('idea-container')).slice();
+  let nowOrder = document.getElementById('time-order');
+
+  function sortIdeas(criteria) {
+    const ideaList = document.querySelector('.main-content');
+    const ideas = Array.from(ideaList.getElementsByClassName('idea-container'));
+    nowOrder.classList.remove('now-order');
+    if (criteria === 'time') {
+        ideaList.replaceChildren(...originalIdeas);
+        nowOrder = document.getElementById('time-order');
+        nowOrder.classList.add('now-order');
+        return;
+    }
+    if (criteria === 'timeReverse') {
+        const copy = originalIdeas.slice();
+        ideaList.replaceChildren(...copy.reverse());
+        nowOrder = document.getElementById('timeReverse-order');
+        nowOrder.classList.add('now-order');
+        return;
+    }
+    ideas.sort((a, b) => {
+        if (criteria === 'title') {
+            nowOrder = document.getElementById('title-order');
+            return a.dataset.title.localeCompare(b.dataset.title);
+        } else if (criteria === 'interest') {
+            nowOrder = document.getElementById('interest-order');
+            return b.dataset.interest - a.dataset.interest;
+        }
+    });
+    nowOrder.classList.add('now-order');
+  ideaList.replaceChildren(...ideas);
+  }
+</script>
+{%endblock js%}
+{% comment %} # Create your models here.
+class Idea(models.Model):
+  title=models.CharField(max_length=50)
+  image=models.ImageField()
+  content=models.TextField()
+  interest=models.IntegerField()
+  devtool=models.ForeignKey(Devtool, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return self.title {% endcomment %}
