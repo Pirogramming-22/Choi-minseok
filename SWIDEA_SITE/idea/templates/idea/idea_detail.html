@@ -1,0 +1,37 @@
+{%extends './base.html'%}
+{%load static%}
+{%block css%}
+<link rel="stylesheet" href="{% static 'idea/css/reset.css' %}">
+<link rel="stylesheet" href="{% static 'idea/css/styles.css' %}">
+<link rel="stylesheet" href="{% static 'idea/css/idea_detail.css' %}">
+{%endblock css%}
+
+{%block main-name %}
+  <h1>{{idea.title}}</h1>
+{%endblock main-name %}
+
+{%block main-content %}
+<div class="idea-detail">
+  <img src="{{idea.image.url}}" alt="{{idea.title}}" width=300, height=330>
+  <p>{{idea.content|linebreaksbr}}</p>
+  <a href="{%url 'develop_detail' idea.devtool.id%}"><p>예상 개발 툴 : {{idea.devtool.name}}</p></a>
+  <p>관심도 : {{idea.interest}}</p>
+</div>
+<div class="main-another">
+  
+  <a class="udud" href="{% url 'idea_update' idea.pk %}">수정하기</a>
+  <a class="udud" href="{% url 'idea_delete' idea.pk %}">삭제하기</a>
+  <a href="{% url 'idea_list' %}">목록으로 돌아가기</a>
+</div>
+{%endblock main-content%}
+
+{% comment %} # Create your models here.
+class Idea(models.Model):
+  title=models.CharField(max_length=50)
+  image=models.ImageField()
+  content=models.TextField()
+  interest=models.IntegerField()
+  devtool=models.ForeignKey(Devtool, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return self.title {% endcomment %}

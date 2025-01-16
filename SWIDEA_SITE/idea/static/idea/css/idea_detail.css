@@ -1,0 +1,42 @@
+
+
+.idea-detail{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 100px;
+  margin: 20px 30px;
+  border: 2px solid black;
+}
+
+.develop-detail{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 100px;
+  margin: 20px 30px;
+  border-left: 2px solid black;
+}
+.dvt-used{
+  display: flex;
+  margin: 20px 0;
+}
+.dvt-used li{
+  margin: 20px 0;
+  padding-right: 20px;
+}
+.dvt-used li a{
+  padding: 5px;
+  background-color: lightgreen;
+}
+.main-another{
+  margin-top: 20px;
+}
+.udud{
+  background-color: lightseagreen;
+  padding: 10px;
+}

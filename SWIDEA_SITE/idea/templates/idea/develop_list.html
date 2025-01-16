@@ -1,0 +1,29 @@
+{%extends './base.html'%}
+{%load static%}
+{%block css%}
+<link rel="stylesheet" href="{% static 'idea/css/reset.css' %}">
+<link rel="stylesheet" href="{% static 'idea/css/styles.css' %}">
+{%endblock css%}
+
+{%block main-name %}
+  <h1>DEVELOP List</h1>
+{%endblock main-name %}
+
+{%block main-content %}
+<ul class="devtool-container">
+{% for dtl in dtls %}
+<li>
+  <a id="dtl-name" href="{%url 'develop_detail' dtl.id %}"><h2>{{dtl.name}}</h2></a>
+  <p>{{dtl.kind}}</p>
+</li>
+{% endfor %}
+</ul>
+{%endblock main-content%}
+
+{% comment %} class Devtool(models.Model):
+  name=models.CharField(max_length=50)
+  kind=models.CharField(max_length=50)
+  content=models.TextField()
+
+  def __str__(self):
+    return self.name {% endcomment %}

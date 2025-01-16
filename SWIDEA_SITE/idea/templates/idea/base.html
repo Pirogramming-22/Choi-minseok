@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Idea Site</title>
+  {%block css%}
+  
+  {%endblock css%}
+</head>
+<body>
+  <nav>
+    <ul id="nav-links">
+      <li id="logo">My SW IDEA Manage</li>
+      <li><a href="{%url 'idea_create' %}">아이디어 등록</a></li>
+      <li><a href="{% url 'idea_list' %}">아이디어 관리</a></li>
+      <li><a href="{%url 'develop_create'%}">개발툴 등록</a></li>
+      <li><a href="{% url 'develop_list' %}">개발툴 관리</a></li>
+    </ul>
+  </nav>
+  <main>
+    <div class="main-name">
+    {%block main-name %}
+    {%endblock main-name %}
+    </div>
+    <div class="main-content">
+    {%block main-content %}
+    {%endblock main-content %}
+    </div>
+  </main>
+  {%block js%}
+  {%endblock js%}
+</body>
+</html>

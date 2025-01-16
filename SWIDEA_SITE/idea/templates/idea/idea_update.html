@@ -1,0 +1,30 @@
+{%extends './base.html'%}
+{%load static%}
+{%block css%}
+<link rel="stylesheet" href="{% static 'idea/css/reset.css' %}">
+<link rel="stylesheet" href="{% static 'idea/css/styles.css' %}">
+<link rel="stylesheet" href="{% static 'idea/css/idea_create.css' %}">
+{%endblock css%}
+
+{%block main-name %}
+  <h1>아이디어 수정</h1>
+{%endblock main-name %}
+
+{%block main-content %}
+<form method="POST" enctype="multipart/form-data">
+  {%csrf_token%}
+  {{form.as_p}}
+  <button type="submit">등록하기</button>
+</form>
+{%endblock main-content%}
+
+{% comment %} # Create your models here.
+class Idea(models.Model):
+  title=models.CharField(max_length=50)
+  image=models.ImageField()
+  content=models.TextField()
+  interest=models.IntegerField()
+  devtool=models.ForeignKey(Devtool, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return self.title {% endcomment %}
