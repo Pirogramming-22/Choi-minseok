@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <link rel="stylesheet" href="{%static 'pirostagram/css/reset.css'%}"/>
+    <link rel="stylesheet" href="{%static 'pirostagram/css/layout.css'%}"/>
+    <link rel="stylesheet" href="{%static 'pirostagram/css/footer.css'%}"/>
+    <link rel="stylesheet" href="{%static 'pirostagram/css/header.css'%}"/>
+
+    {%block head%}
+    
+    {%endblock%}
+    
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+      {%block header%}
+      {%endblock%}
+      </header>
+      <main>
+      {%block main%}
+      {%endblock%}
+      </main>
+      <footer>
+      {%block footer%}
+      {%endblock%}
+      </footer>
+    </div>
+  </body>
+  {%block script%}
+  {%endblock%}
+</html>

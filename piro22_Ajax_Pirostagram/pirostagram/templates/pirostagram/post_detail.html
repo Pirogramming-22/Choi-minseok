@@ -1,0 +1,125 @@
+{% extends './base.html'%}
+{%load static%}
+
+{%block head%}
+<link rel="stylesheet" href="{%static 'pirostagram/css/post_detail.css'%}" />
+{%endblock%}
+
+{%block header%}
+<button class="header__goBackButton">
+  <a href="{%url 'index'%}">
+  <img src="{%static 'pirostagram/assets/icons/goBack.svg'%}" alt="뒤로 가기 버튼" />
+  </a>
+</button>
+<div class="header__username" style="text-align:center;">{{post.user}}<br> 게시글</div>
+<div class="header__rightButtons">
+  <button class="header__alarmButton">
+  </button>
+  <button class="header__moreButton">
+  </button>
+</div>
+{%endblock%}
+
+{%block main%}
+<div class="postDetail post-id-{{post.id}}">
+  <img src="{{post.image.url}}" width="100%" height="490px" alt="게시글 이미지" />
+
+  <div class="btn btn-primary post__like" onclick="onClickLike({{post.id}}, {{user.id}})">Like {{ post.likes_count }}</div>
+  {{post.user}}
+  {{post.content}}
+<div>
+<div class="comment-list">
+  <ul>
+    {%for comment in comments%}
+    <li>
+      <span>{{comment.user}}</span>
+      <span>{{comment.content}}</span>
+      {%if comment.user == user%}
+      <span class="delBtn "id="del-{{comment.id}}" onclick="onClickDel({{comment.id}})">삭제하기</span>
+      {%endif%}
+    </li>
+    {%endfor%}
+  </ul>
+</div>
+<div class="comment-input">
+  <form action="" method="post" id="commentForm">
+    {%csrf_token%}
+    <input type="text" name="content" placeholder="댓글을 입력하세요" />
+    <button type="submit">등록</button>
+  </form>
+</div>
+{%endblock%}
+{%block footer%}
+        <button class="navBar">1</button>
+        <button class="navBar">2</button>
+        <button class="navBar">3</button>
+        <button class="navBar">4</button>
+        <button class="navBar navBar--selected">5</button>
+{%endblock%}
+{%block script%}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+
+const onClickDel = async(comment_id) => {
+  const url = "/del_ajax/";
+  const {data} = await axios.post(url, {
+    comment_id,
+  });
+  deleteComment(data)
+}
+
+const deleteComment = (data) => {
+  const commentId = `del-${data.comment_id}`;
+  const commentElement = document.getElementById(commentId);
+  if (commentElement) {
+    commentElement.parentElement.remove();
+  }
+}
+
+
+document.getElementById("commentForm").addEventListener("submit", async function(event){
+  event.preventDefault(); 
+  const url = "/comment_ajax/";
+  const {data} = await axios.post(url, {
+    post_id: {{post.id}},
+    user: {{user.id}},
+    content: event.target.content.value,
+  });
+  commentResponse(data)
+  event.target.content.value = "";
+})
+
+const commentResponse = (data) => {
+  const commentList = document.querySelector(".comment-list ul");
+  const comment = document.createElement("li");
+  comment.innerHTML = `
+    <span>${data.user}</span>
+    <span>${data.content}</span>
+    <span class="delBtn" id="del-${data.comment_id}"onclick="onClickDel(${data.comment_id})">삭제하기</span>
+  `;
+  commentList.appendChild(comment);
+}
+
+    const onClickLike = async(post_id, user) => {
+        const url = "/like_ajax/";
+        const { data } = await axios.post(url, {
+            post_id,
+            user, 
+        }); 
+        likeHandleResponse(data.post_id, data.likes_count);
+  }
+
+    const likeHandleResponse = (post_id, likes_count) =>{
+        const element = document.querySelector(`.post-id-${post_id} .post__like`);
+        const originalLike = Number(element.innerHTML.split(" ")[1]);
+        if(element){
+          element.innerHTML = `Like ${likes_count}`;
+        }
+        if (originalLike < likes_count){
+          element.classList.add("liked");
+        } else {
+          element.classList.remove("liked");
+        }
+    }
+</script>
+{%endblock%}

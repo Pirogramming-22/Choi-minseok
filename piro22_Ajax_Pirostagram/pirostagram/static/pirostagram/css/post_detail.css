@@ -1,0 +1,31 @@
+.postDetail{
+  font-size: 16px;
+}
+
+.post__like{
+  font-size: 20px;
+  border: 1px solid tomato;
+  width: 80px;
+  padding: 7px;
+}
+.liked{
+  background-color: tomato;
+}
+.post__like:hover{
+  cursor: pointer;
+}
+.comment-list ul li{
+  padding: 10px 0;
+}
+.delBtn{
+  background-color: teal;
+  font-size: 16px;
+  padding: 2px;
+}
+.delBtn:hover{
+  cursor: pointer;
+}
+.comment-input button{
+  background-color: white;
+  color: black;
+}
